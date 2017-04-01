@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>后台管理</title>
+    <link type="text/css" href="/stylesheets/manager.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="header">
+    <div class="header_title"><a href="/">LOL新闻模块</a><span class="header_user">欢迎你, <%= user %></span></div>
+</div>
+<div class="addinfo">
+    <div>
+        <span>标题 </span><input id="title" type="text"/>
+    </div>
+    <div>
+        <span>图片 </span><input id="img" type="text"/>
+    </div>
+    <div>
+        <span>URL </span><input id="url" type="text"/>
+    </div>
+    <div class="addinfo_btn" id="submit">提交</div>
+</div>
+
+<div>
+    <table width="1000">
+        <tr style="text-align:center;font-size:15px;height:30px;color:#fff;background-color:#36A0FB;border:0;">
+            <td style="width:50px">编号</td>
+            <td style="width:200px">新闻标题</td>
+            <td style="width:250px">新闻地址</td>
+            <td style="width:250px">图片地址</td>
+            <td style="width:200px">添加时间</td>
+        </tr>
+        <% for(var i in data){ %>
+        <tr style="text-align:center;height:26px;color:#4C4C4C;">
+            <td><%= (parseInt(i) + 1) %></td>
+            <td><%= data[i].title %></td>
+            <td><%= data[i].url %></td>
+            <td><%= data[i].pic %></td>
+            <td><%= data[i].time %></td>
+        </tr>
+        <% } %>
+    </table>
+</div>
+<div id="footer">
+    <p style="width:100%; text-align:center; font-size: 12px">
+        作者: 李昊 联系方式: 17786123214
+    </p>
+</div>
+<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+<script type="text/javascript">
+    $('#submit').on('click', function () {
+        var title = $('#title').val();
+        var url = $('#url').val();
+        var img = $('#img').val();
+        if (title === '' || url === '' || img === '') {
+            alert('参数填写不全!')
+            return
+        }
+        var obj = {
+            title: title,
+            url: url,
+            img: img
+        };
+        $.ajax({
+            type: 'POST',
+            url: '/funny/add',
+            data: obj,
+            success: function (data) {
+                if (data.status) {
+                    alert('添加数据成功');
+                    window.location.reload();
+                } else {
+                    alert('添加失败');
+                }
+            },
+            error: function () {
+                alert('添加失败');
+            },
+            dataType: 'json'
+        });
+    });
+</script>
+</body>
+</html>

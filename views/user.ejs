@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>后台管理</title>
+    <link type="text/css" href="/stylesheets/manager.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="header">
+    <div class="header_title"><a href="/">后台管理系统</a><span class="header_user">欢迎, <%= user %></span></div>
+</div>
+<div class="addinfo" style="height: 20px">
+
+</div>
+
+<div>
+    <table width="1000">
+        <tr style="text-align:center;font-size:15px;height:30px;color:#fff;background-color:#36A0FB;border:0;">
+            <td style="width:55px">编号</td>
+            <td style="width:60px">用户ID</td>
+            <td style="width:90px">用户名</td>
+            <td style="width:250px">用户邮箱</td>
+            <td style="width:250px">电话号码</td>
+            <td style="width:250px">权限</td>
+        </tr>
+        <% for(var i in data){ %>
+        <tr style="text-align:center;height:26px;color:#4C4C4C;">
+            <td><%= (parseInt(i) + 1) %></td>
+            <td><%= data[i].id %></td>
+            <td><%= data[i].name %></td>
+            <td><%= data[i].email %></td>
+            <td><%= data[i].tel %></td>
+            <td>敬请期待</td>
+        </tr>
+        <% } %>
+    </table>
+</div>
+<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+</body>
+</html>
