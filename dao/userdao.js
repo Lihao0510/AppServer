@@ -1,10 +1,9 @@
 /**
  * Created by lihao on 2017/1/31.
  */
-var mysql = require('mysql')
-var config = require('config-lite')
-var sql = require('../mapper/usermapper')
-var pool = mysql.createPool(config.mysqlconf)
+
+var sql = require('../mapper/usermapper');
+var pool = require('./mysqlPool');
 
 module.exports = {
     add: function (param, callback) {

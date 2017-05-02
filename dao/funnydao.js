@@ -1,12 +1,12 @@
 /**
  * Created by lihao on 2017/2/3.
  */
-var mysql = require('mysql')
-var config = require('config-lite')
-var sql = require('../mapper/funnymapper')
-var pool = mysql.createPool(config.mysqlconf)
-var moment = require('moment')
-var pageSize = config.pageconf.pageSize
+
+var sql = require('../mapper/funnymapper');
+var pool = require('./mysqlPool');
+var moment = require('moment');
+var config = require('config-lite');
+var pageSize = config.pageconf.pageSize;
 
 module.exports = {
     add: function (param) {

@@ -21,7 +21,8 @@ router.get('/', checklogin, function (req, res, next) {
 
 router.get('/list', function (req, res, next) {
 
-    dao.queryAll(50).then(function (result) {
+    dao.queryAll(50)
+        .then(function (result) {
         return res.send({
             status: 1,
             data: JSON.parse(JSON.stringify(result))
